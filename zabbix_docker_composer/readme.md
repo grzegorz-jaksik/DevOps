@@ -1,0 +1,1 @@
+directory contains zabbix server, DB and frontend config files to run zabbix in containers using Docker Compose
