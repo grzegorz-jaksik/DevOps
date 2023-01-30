@@ -1,0 +1,20 @@
+---
+- name: wpisywanie zmiennej z ekrany
+  hosts: all
+  gather_facts: no
+  vars_prompt:
+  - name: package
+    prompt: nazwę programu do zainstalowania
+    private: no
+  tasks:
+  - debug:
+      msg: program do zainstalowania  {{ package }}
+
+- name: wpisywanie zmiennej z ekrany
+  hosts: all
+  gather_facts: no
+  vars_prompt:
+
+  tasks:
+  - debug:
+      msg: program do zainstalowania  {{ package }}

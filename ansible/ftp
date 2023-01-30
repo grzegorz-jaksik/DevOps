@@ -1,0 +1,16 @@
+- name: Instalacja i uruchomienie dockera
+  hosts: all
+  become: true
+  
+  
+  tasks:
+  - name: Instalacja FTP
+    apt:
+      name: vsftpd
+      state: present
+
+  - name: uruchomienie FTP
+    service:
+      name: vsftpd
+      state: started
+      enabled: true

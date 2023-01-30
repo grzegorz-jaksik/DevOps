@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: nginx
+spec:
+  containers:
+  - name: nginx
+    image: nginx:1.14.2
+    ports:
+    - containerPort: 80
+    command: [bash]
+    args: ["-c","sleep 5"]
+  - name: nginx2
+    image: nginx:1.14.2
+    ports:
+    - containerPort: 80
+    command: [bash]
+    args: ["-c","sleep 10"]
+  restartPolicy: Never

@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-deplyment
+  labels:
+    kurs: dor6
+spec:
+  replicas: 10
+  selector:
+    matchLabels:
+      app: nginx
+  template:
+    metadata:
+      labels:
+        app: nginx
+        kurs: dor6
+    spec:
+      containers:
+      - name: nginx
+        image: nginx:1.14.2
+        volumeMounts:
+        - name: wolumen-z-sekretu
+          mountPath: /tst
+        ports:
+        - containerPort: 80
+        readinessProbe:
+          httpGet:
+            path: /
+            port: 80
+          initialDelaySeconds: 18
+          periodSeconds: 5
+
+      volumes:
+      - name: wolumen-z-sekretu
+        secret:
+          secretName: tst
+      

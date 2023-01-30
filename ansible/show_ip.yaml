@@ -1,0 +1,9 @@
+---
+- name: show ip addr
+  hosts: all
+  
+  tasks:
+    - name: wyswietl IP
+      debug:
+        msg: adres ip to {{ ansible_facts[default_ipv4][address] }}
+  

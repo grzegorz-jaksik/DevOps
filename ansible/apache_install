@@ -1,0 +1,21 @@
+- name: instalacja Apache na roznych systemach
+  become: true
+  hosts: all
+
+
+  tasks:
+  - name: Ubuntu
+    package:
+      name: apache2
+      state: latest
+    when: (ansible_facts['distribution'] == "Ubuntu"
+
+
+  tasks:
+  - name: CentOS
+    package:
+      name: httpd
+      state: latest
+    when: (ansible_facts['distribution'] == "Centos"  
+  
+

@@ -1,0 +1,12 @@
+---
+- name: twoja stara
+  hosts: 127.0.0.1
+
+  tasks:
+  - name: first task
+    debug:
+      msg: 123
+
+  - name: secound
+    debug:
+      msg: 234

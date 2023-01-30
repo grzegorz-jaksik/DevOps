@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: network-tools
+spec:
+  selector:
+    matchLabels:
+      run: network-tools
+  template:
+    metadata:
+      labels:
+        run: network-tools
+        test: isador
+    spec:
+      containers:
+      - args:
+        - -c
+        - sleep 999999
+        command:
+        - /bin/bash
+        image: nicolaka/netshoot
+        name: net

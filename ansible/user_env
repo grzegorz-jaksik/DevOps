@@ -1,0 +1,9 @@
+---
+- name: user ze zmiennej
+  hosts: all
+#   vars:
+#     user: user
+  tasks:
+  - name: create {{user}} from variable 
+    user:
+      name: "{{user}}"

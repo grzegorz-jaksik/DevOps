@@ -1,0 +1,35 @@
+
+services:
+  zabbix: 
+    build: 
+      context: server
+    ports:
+     - 10051:10051
+    depends_on:
+     - postgres
+  postgres:
+    image: postgres:15
+    restart: always
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_PASSWORD=zabbix
+      - POSTGRES_USER=zabbix
+      - POSTGRES_DB=zabbix
+  frontend: 
+    build: 
+      context: frontend
+    ports:
+     - 8040:80
+    depends_on:
+     - postgres
+     - zabbix
+    volumes:
+     - www:/var/www/html
+     - php_conf:/usr/local/etc/php
+
+volumes:
+  pgdata:
+  www:
+  php_conf:
+  
