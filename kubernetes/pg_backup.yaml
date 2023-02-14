@@ -1,0 +1,41 @@
+#cronjob with Persist volume claim that backup PG database
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: backup
+spec:
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: 3Gi
+---
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: pg-backup
+  namespace: baza
+spec:
+  schedule: "* * * * *"
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+          - name: pg-backup
+            image: bitnami/postgresql:15.2.0-debian-11-r1
+            command:
+            - bash
+            - -c
+            - pg_dumpall -h 10.100.230.150 -p 5432 -U postgres --file /backup/$(date +%d-%m-%Y-%H:%M).dump && ls /backup
+            volumeMounts:
+              - mountPath: /backup
+                name: storage
+            env:
+            - name: PGPASSWORD
+              value: rDDTt2NHSD
+          volumes:
+          - name: storage
+            persistentVolumeClaim:
+              claimName: backup
+          restartPolicy: Never
