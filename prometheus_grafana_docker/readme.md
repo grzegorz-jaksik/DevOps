@@ -8,11 +8,11 @@ Metric are collected in Prometheus and visualised in Grafana, so you can check p
 Host can be definied in  ./ping-exporter/config.yml file. IP and hostname are supprted. By default ipv6 is disabled, DNS server also can be definied.(see config.yml file)
 all you need is Docker and Docker composer installed. 
 
-Runing  command: "sudo docker compose up" in main project directory. 
+Runing  command: **"sudo docker compose up"** in main project directory. 
 
 default host addr:\
 Grafana: localhost:3000\
 Prometheus: localhost:9090\
 Ping Exporter: localhost:9427
 
-above settings can be easy modifed in compose.yaml 
+this settings can be easy modifed in **compose.yaml** 
