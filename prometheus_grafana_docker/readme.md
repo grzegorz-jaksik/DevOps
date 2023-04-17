@@ -1,6 +1,6 @@
 **Simple PING-monitor Prometheus and Docker based project**\
 This tool set allows monitor and detect host across the network(local or internet) using very popular PING method.
-It Contains three  containers (Prometheus, Ping Exportedr, Grafana). 
+It Contains three  containers (Prometheus, Ping_Exporter, Grafana). 
 Ping_Exporter is simple Prometheus exporter (https://github.com/czerwonk/ping_exporter) witch ping hosts and gives a few simple metrics like ping best, worst, mean time, standard deviation, lost ping ratio etc.
 
 Metric are collected in Prometheus and visualised in Grafana, so you can check ping statistic in a convinient way in a period of time you need.(for example from two days or couple of hours)
