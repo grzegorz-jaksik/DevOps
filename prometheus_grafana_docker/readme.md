@@ -13,6 +13,6 @@ Runing  command: "sudo docker compose up" in main project directory.
 default host addr:\
 Grafana: localhost:3000\
 Prometheus: localhost:9090\
-Ping Exporter: localhost:9427\
+Ping Exporter: localhost:9427
 
 above settings can be easy modifed in compose.yaml 
