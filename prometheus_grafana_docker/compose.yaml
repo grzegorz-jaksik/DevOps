@@ -1,0 +1,32 @@
+services:
+  prometheus:
+    image: prom/prometheus
+    ports:
+      - 9090:9090
+    volumes:
+      - ./prometheus:/etc/prometheus
+      - prom_data:/prometheus
+    depends_on:
+      - ping-exporter
+
+  ping-exporter:
+    image: czerwonk/ping_exporter
+    ports:
+      - 9427:9427
+    volumes:
+      - ./ping-exporter:/config
+  
+  grafana:
+    image: grafana/grafana
+    ports:
+      - 3000:3000
+    restart: unless-stopped
+    volumes:
+      - ./grafana:/etc/grafana/provisioning/datasources
+      - grafana-data:/var/lib/grafana
+    depends_on: 
+      - prometheus
+  
+volumes:
+  prom_data:
+  grafana-data:
