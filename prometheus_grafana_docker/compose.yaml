@@ -8,6 +8,7 @@ services:
       - prom_data:/prometheus
     depends_on:
       - ping-exporter
+      - alertmanager
 
   ping-exporter:
     image: czerwonk/ping_exporter
@@ -26,6 +27,14 @@ services:
       - grafana-data:/var/lib/grafana
     depends_on: 
       - prometheus
+  
+  alertmanager:
+    image: prom/alertmanager
+    ports:
+      - 9093:9093
+    volumes:
+      - ./alertmanager:/etc/alertmanager
+  
   
 volumes:
   prom_data:

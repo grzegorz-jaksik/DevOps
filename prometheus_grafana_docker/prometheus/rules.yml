@@ -1,0 +1,14 @@
+groups:
+- name: AllInstances
+  rules:
+  - alert: InstanceDown
+    # Condition for alerting
+    expr: ping_loss_ratio == 1
+    for: 10s
+    # Annotation - additional informational labels to store more information
+    annotations:
+      title: 'Instance {{ $labels.instance }} ping lost'
+      description: '{{ $labels.instance }} of job {{ $labels.job }} not respond to ping more than 10s'
+    # Labels - additional labels to be attached to the alert
+    labels:
+      severity: 'critical'

@@ -1,5 +1,6 @@
 targets:
   - 192.168.1.210
+  - 8.8.8.8
 
 dns:
   refresh: 2m15s
